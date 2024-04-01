@@ -34,12 +34,12 @@ public class GumballService implements IGumballService{
 
     @Override
     public TransitionResult ejectQuarter(String id) {
-        return null;
+        return null;//TODO
     }
 
     @Override
     public TransitionResult turnCrank(String id) {
-        return null;
+        return null;//TODO
     }
 
     
