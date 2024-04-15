@@ -1,15 +1,10 @@
 package edu.iu.habahram.GumballMachine.model;
 
-public interface IGumballMachine {
+public interface IState {
     TransitionResult insertQuarter();
     TransitionResult ejectQuarter();
     TransitionResult turnCrank();
     TransitionResult dispense();
     TransitionResult refill();
-
-    void changeTheStateTo(GumballMachineState name);
-    Integer getCount();
-    String getTheStateName();
-
-    void releaseBall();
+    String getTheName();
 }
