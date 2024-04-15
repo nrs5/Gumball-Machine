@@ -55,10 +55,21 @@ public class GumballMachineController {
         }
     }
 
+
     @PutMapping("/turn-crank")
     public TransitionResult turnCrank(@RequestBody TransitionRequest transitionRequest) {
         try {
             return gumballService.turnCrank(transitionRequest.id());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @PutMapping("/refill")
+    public TransitionResult refill(@RequestBody String id, @RequestBody int count) {
+        try {
+            return gumballService.refill(id, count);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
