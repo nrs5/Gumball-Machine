@@ -33,16 +33,32 @@ public class GumballService implements IGumballService{
     }
 
     @Override
-    public TransitionResult ejectQuarter(String id) {
-        return null;//TODO
+    public TransitionResult ejectQuarter(String id) throws IOException {
+        GumballMachineRecord record = gumballRepository.findById(id);
+        IGumballMachine machine = new GumballMachine(record.getId(), record.getState(), record.getCount());
+        TransitionResult result = machine.ejectQuarter();
+        if(result.succeeded()) {
+            record.setState(result.stateAfter());
+            record.setCount(result.countAfter());
+            save(record);
+        }
+        return result;
     }
 
     @Override
-    public TransitionResult turnCrank(String id) {
-        return null;//TODO
+    public TransitionResult turnCrank(String id) throws IOException {
+        GumballMachineRecord record = gumballRepository.findById(id);
+        IGumballMachine machine = new GumballMachine(record.getId(), record.getState(), record.getCount());
+        TransitionResult result = machine.ejectQuarter();
+        if(result.succeeded()) {
+            record.setState(result.stateAfter());
+            record.setCount(result.countAfter());
+            save(record);
+        }
+        return result;
     }
 
-    
+
 
     @Override
     public List<GumballMachineRecord> findAll() throws IOException {
